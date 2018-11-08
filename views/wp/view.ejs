@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+      <img src="<%=data.item_info.img_src %>" style="width:116px;height:70px;"></img>
+      <a href="/wp/<%=data.item_info.id %>"><%=data.item_info.item_nm %></a>
+      <small><a href="/wp">강화별 공격력</a></small>
+      <small class="cri">치명:<%=data.item_info.cri %></small>
+      <small><a href="/custom/<%=data.item_info._id %>">[커스터마이징go]</a></small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item"><a href="/wp">무기</a></li>
+      <li class="breadcrumb-item"><%=data.item_info.tier %>등급</li>
+      <li class="breadcrumb-item"><%=data.item_info.item_dtl_dv %></li>
+      <li class="breadcrumb-item active"><a href="/wp/<%=data.item_info.id %>"><%=data.item_info.item_nm %></a></li>
+    </ol>
+
+    <% include ../partials/kakao300250 %>
+
+    <p>
+      <%
+        var upnm_list = data.upnm_list;
+        var up_list1 = data.up_obj.up_cls1;
+        var up_list2 = data.up_obj.up_cls2;
+        var up_list3 = data.up_obj.up_cls3;
+        var up_list4 = data.up_obj.up_cls4;
+        var up_list5 = data.up_obj.up_cls5;
+        var up_list6 = data.up_obj.up_cls6;
+        var up_list7 = data.up_obj.up_cls7;
+      %>
+      <h2 class="my-4 up_classes1">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        일반의 몸체
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list1[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list1[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list1[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list1[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list1[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes2">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        초보의 몸체 (강화성공율:90%~100%)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list2 == null || up_list2.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list2[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list2[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list2[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list2[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list2[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes3">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        숙련의 몸체 (강화성공율:70%~100%)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list3[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list3[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list3[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list3[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list3[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes4">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        전문의 몸체 (강화성공율:50%~75%)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list4[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list4[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list4[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list4[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list4[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes5">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        장인의 몸체 (강화성공율:알수없음)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list5[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list5[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list5[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list5[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list5[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes6">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        명인의 몸체 (강화성공율:알수없음)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list6[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list6[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list6[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list6[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list6[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+      <p><% include ../partials/ad300250 %></p>
+      <h2 class="my-4 up_classes7">
+        <img src="/resource/img/upitm<%=data.item_info.stype1 %>1.gif" style="width:43px;height:26px;"></img>
+        O.T. 몸체 (강화성공율:알수없음)
+      </h2>
+      <table class="table table-bordered wpdtltab">
+        <%
+          if(up_list1 == null || up_list1.length == 0) {
+        %>
+        <tr>
+          <td class="noData" colspan="5"> There is no data to show :( </td>
+        </tr>
+        <%
+          }else{
+            for(var i=0; i<4; i++) {
+        %>
+        <tr>
+          <td><%= upnm_list[(i*5)+0] %></td>
+          <td><%= upnm_list[(i*5)+1] %></td>
+          <td><%= upnm_list[(i*5)+2] %></td>
+          <td><%= upnm_list[(i*5)+3] %></td>
+          <td><%= upnm_list[(i*5)+4] %></td>
+        </tr>
+        <tr>
+          <td class="dmg"><%= up_list7[(i*5)+0] %></td>
+          <td class="dmg"><%= up_list7[(i*5)+1] %></td>
+          <td class="dmg"><%= up_list7[(i*5)+2] %></td>
+          <td class="dmg"><%= up_list7[(i*5)+3] %></td>
+          <td class="dmg"><%= up_list7[(i*5)+4] %></td>
+        </tr>
+        <%
+            }
+          }
+        %>
+      </table>
+    </p>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+  <script>
+    jQuery(document).ready(function() {
+      // utils.setAdSense();
+    });
+  </script>
+</body>
+</html>

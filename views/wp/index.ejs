@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3"><a href="/wp">아이템정보</a>
+      <small><a href="/wp">무기</a></small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active"><a href="/wp">무기</a></li>
+    </ol>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              #일반#CL
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="clyn">
+              <a class="dropdown-item" value="">전체</a>
+              <a class="dropdown-item" value="N">Non-CL</a>
+              <a class="dropdown-item" value="Y">CL</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              #일반#불법무기
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="illegal">
+              <a class="dropdown-item" value="">전체</a>
+              <a class="dropdown-item" value="N">일반무기</a>
+              <a class="dropdown-item" value="Y">불법무기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              #근거리#원거리
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="stype1">
+              <a class="dropdown-item" value="">전체</a>
+              <a class="dropdown-item" value="2">근거리</a>
+              <a class="dropdown-item" value="1">원거리</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              #등급(1~6)
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="tier1">
+              <a class="dropdown-item" value="">전체등급</a>
+              <a class="dropdown-item" value="1">1등급</a>
+              <a class="dropdown-item" value="2">2등급</a>
+              <a class="dropdown-item" value="3">3등급</a>
+              <a class="dropdown-item" value="4">4등급</a>
+              <a class="dropdown-item" value="5">5등급</a>
+              <a class="dropdown-item" value="6">6등급</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              #등급(7~12)
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="tier2">
+              <a class="dropdown-item" value="">전체등급</a>
+              <a class="dropdown-item" value="7">7등급</a>
+              <a class="dropdown-item" value="8">8등급</a>
+              <a class="dropdown-item" value="9">9등급</a>
+              <a class="dropdown-item" value="10">10등급</a>
+              <a class="dropdown-item" value="11">11등급</a>
+              <a class="dropdown-item" value="12">12등급</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item_db_body">
+      <div class="item_db_list">
+
+      </div>
+    </div>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <div>
+    <form id="in_form" name="in_form">
+      <input type="hidden" id="in_clyn" value="Y" />
+      <input type="hidden" id="in_illegal" value="" />
+      <input type="hidden" id="in_stype1" value="2" />
+      <input type="hidden" id="in_tier" value="" />
+      <input type="hidden" id="in_ctype" value="1" />
+    </form>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+  <script>
+    var cl_nm = "#CL";
+    var illegal_nm = "";
+    var stype1_nm = "#근거리";
+    var tier_nm = "";
+
+    jQuery(document).ready(function() {
+      init();
+
+      $(".dropdown-item").click(function() {
+        var curr_id = $(this).parents("div").attr("id");
+        if(curr_id=="clyn") {
+          cl_nm = "#"+$(this).text();
+          $("#in_clyn").val($(this).attr("value"));
+        }else if(curr_id=="illegal") {
+          illegal_nm = "#"+$(this).text();
+          $("#in_illegal").val($(this).attr("value"));
+        }else if(curr_id=="stype1") {
+          stype1_nm = "#"+$(this).text();
+          $("#in_stype1").val($(this).attr("value"));
+        }else if(curr_id=="tier1" || curr_id=="tier2") {
+          tier_nm = "#"+$(this).text();
+          $("#in_tier").val($(this).attr("value"));
+        }
+        var curr_list_nm = cl_nm+illegal_nm+stype1_nm+tier_nm;
+
+        $("ol.breadcrumb").html("<li class=\"breadcrumb-item\"><a href=\"/\">Home</a></li><li class=\"breadcrumb-item\"><a href=\"/wp\">무기</a></li>");
+        $("ol.breadcrumb").append("<li class=\"breadcrumb-item active\">"+curr_list_nm+"</li>");
+
+        wp.get_itemdb_list();
+      });
+    });
+
+    function init() {
+      var curr_list_nm = cl_nm+illegal_nm+stype1_nm+tier_nm;
+      $("ol.breadcrumb").append("<li class=\"breadcrumb-item active\">"+curr_list_nm+"</li>");
+
+      wp.get_itemdb_list();
+    }
+  </script>
+</body>
+</html>

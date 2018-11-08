@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3"><a href="/dmgsim">데미지시뮬레이션</a>
+      <!-- <small><a href="/dmgsim">무기</a></small> -->
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active"><a href="/dmgsim">데미지시뮬레이션</a></li>
+    </ol>
+
+    <p><% include ../partials/ad %></p>
+
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">확률안내</h4>
+          <div class="card-body">
+            <p class="card-text">
+              500EP 54.5% <br/>
+              1000EP 21.7% <br/>
+              3000EP 10% <br/>
+              5000EP 8% <br/>
+              10000EP 3.5% <br/>
+              30000EP 1.3% <br/>
+              50000EP 0.7% <br/>
+              100000EP 0.3%
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+  <script>
+    jQuery(document).ready(function() {
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3"><a href="/ybsim">용병계산기</a>
+      <!-- <small><a href="/dmgsim">무기</a></small> -->
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active"><a href="/ybsim">용병계산기</a></li>
+    </ol>
+
+    <p><% include ../partials/ad %></p>
+
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">용병정보</h4>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">타격공격력</button>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="0" id="ybDmgA" />
+              </div>
+              <div style="margin:5px;"></div>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">사격공격력</button>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="0" id="ybDmgB" />
+              </div>
+              <div style="margin:5px;"></div>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">용병체력</button>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="0" id="ybCon" />
+              </div>
+              <div style="margin:5px;"></div>
+              <button class="btn btn-primary" type="button" onclick="javascript:ybsim.getYbInfo();">계산하기</button>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">강화별공격력/체력</h4>
+          <div class="card-body">
+            <p class="card-text">
+              <table id="ybtab" style="width:100%;max-width:100%;font-size:1rem;margin-top:10px;" class="table table-striped table-bordered">
+                <caption>구성품의 결과를 집계합니다.</caption>
+                <colgroup>
+                  <col style='width:*'/>
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td>노강</td>
+                    <td>1강</td>
+                    <td>2강</td>
+                    <td>3강</td>
+                  </tr>
+                  <tr>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                  </tr>
+                  <tr>
+                    <td>4강</td>
+                    <td>5강</td>
+                    <td>6강</td>
+                    <td>7강</td>
+                  </tr>
+                  <tr>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                  </tr>
+                  <tr>
+                    <td>8강</td>
+                    <td>9강</td>
+                    <td>맥강</td>
+                    <td>맥1강</td>
+                  </tr>
+                  <tr>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                  </tr>
+                  <tr>
+                    <td>맥2강</td>
+                    <td>맥3강</td>
+                    <td>맥4강</td>
+                    <td>맥5강</td>
+                  </tr>
+                  <tr>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                  </tr>
+                  <tr>
+                    <td>맥6강</td>
+                    <td>맥7강</td>
+                    <td>맥8강</td>
+                    <td>맥9강</td>
+                  </tr>
+                  <tr>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                    <td><span class="dmg bold">사공:0<br/>타공:0<br/>체력:0</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+  <script>
+    jQuery(document).ready(function() {
+      $("#ybDmgA").click(function() {$(this).select();});
+      $("#ybDmgB").click(function() {$(this).select();});
+      $("#ybCon").click(function() {$(this).select();});
+    });
+  </script>
+</body>
+</html>

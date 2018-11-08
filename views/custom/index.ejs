@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3"><a href="/custom">커스터마이징</a>
+      <small><a href="/custom">공격력</a></small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item"><a href="/custom">커스터마이징</a></li>
+      <li class="breadcrumb-item active">공격력</li>
+      <li class="breadcrumb-item"><span class="dmg" id="btit"></span> <span class="cri" id="dptit"></span></li>
+    </ol>
+
+    <p><% include ../partials/ad %></p>
+
+    <p>
+      <h2 class="dmg">인벤공격력 - <span id="curr_inv_dmg">1</span> (<span id="cur_byn">휴먼</span>,<span id="cur_dpdv">노공앰</span>)</h2>
+    </p>
+
+    <div class="row">
+      <div class="col-lg-2 col-md-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <% if(data.yn=="N") { %>
+          <a><img class="card-img-top" src="" alt=""></a>
+          <% }else{ %>
+          <a class="wp_img"></a>
+          <% } %>
+          <div class="card-body">
+            <h4 class="card-title">
+              <% if(data.yn=="N") { %>
+              <a href="/wp">무기를 선택해주세요.</a>
+              <% }else{ %>
+              <span class="wp_dmg_mo"></span>
+              <span id="curr_wp_nm"><%=data.item_info.item_nm %></span><br/>
+              <a href="javascript:wp_change();">[무기변경]</a>
+              <% } %>
+            </h4>
+            <p class="card-text">
+              <% if(data.yn=="N") { %>
+              <% }else{ %>
+              <div class=''>종류:<%=data.item_info.item_dtl_dv %></div>
+              <div class='dmg'>파괴력:<span id="curr_wp_dmg"><%=data.item_info.dmg %></span></div>
+              <div class='cri'>치명타:<%=data.item_info.cri %></div>
+              <div class='accuracy'>명중률:<%=String(Math.floor(Number(data.item_info.accuracy_rate)*100)) %>%</div>
+              <div class='point'>탄착률:<%=String(Math.floor(Number(data.item_info.point_rate)*100)) %>%</div>
+              <div class='speed'>속도:<%=data.item_info.speed %>회/1분</div>
+              <div class=''>등급:<%=data.item_info.tier %></div>
+              <div class=''>크기:<%=data.item_info.size %></div>
+              <div style="margin-top:10px;"></div>
+              <div class="up_classes1" id="curr_wp_body_nm">일반튜닝 몸체</div>
+              <% } %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">몸체</h4>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="btn_group" id="body_up">
+                <button class="btn up1" type="button" value="0">일반</button>
+                <button class="btn up2" type="button" value="1">초보</button>
+                <button class="btn up3" type="button" value="2">숙련</button>
+                <button class="btn up4" type="button" value="3">전문</button>
+                <button class="btn up5" type="button" value="4">장인</button>
+                <button class="btn up6" type="button" value="5">명인</button>
+                <button class="btn up7" type="button" value="6">O.T.</button>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">강화</h4>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="btn_group" id="num_up">
+                <button class="btn nor_up" type="button" value="0">노강</button>
+                <button class="btn nor_up" type="button" value="1">1강</button>
+                <button class="btn nor_up" type="button" value="2">2강</button>
+                <button class="btn nor_up" type="button" value="3">3강</button>
+                <button class="btn nor_up" type="button" value="4">4강</button>
+                <button class="btn nor_up" type="button" value="5">5강</button>
+                <button class="btn nor_up" type="button" value="6">6강</button>
+                <button class="btn nor_up" type="button" value="7">7강</button>
+                <button class="btn nor_up" type="button" value="8">8강</button>
+                <button class="btn nor_up" type="button" value="9">9강</button>
+                <button class="btn max_up" type="button" value="10">맥강</button>
+                <button class="btn max_up" type="button" value="11">맥1강</button>
+                <button class="btn max_up" type="button" value="12">맥2강</button>
+                <button class="btn max_up" type="button" value="13">맥3강</button>
+                <button class="btn max_up" type="button" value="14">맥4강</button>
+                <button class="btn max_up" type="button" value="15">맥5강</button>
+                <button class="btn max_up" type="button" value="16">맥6강</button>
+                <button class="btn max_up" type="button" value="17">맥7강</button>
+                <button class="btn max_up" type="button" value="18">맥8강</button>
+                <button class="btn max_up" type="button" value="19">맥9강</button>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-4">
+        <div class="card h-100">
+          <% if(data.yn=="N") { %>
+          <h4 class="card-header">현재스탯<!-- (<span id="cur_stat_nm1">체력/기술</span>:<span class="bold">5</span>)--></h4>
+          <% }else{ %>
+          <h4 class="card-header">현재스탯<!-- (<span id="cur_stat_nm1"><%=data != null && data.item_info.stype1=="1" ? "기술" : "체력" %></span>:<span class="bold">5</span>)--></h4>
+          <% } %>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <% if(data.yn=="N") { %>
+                    <button class="btn btn-secondary" type="button"><span>체력/기술</span></button>
+                  <% }else{ %>
+                  <button class="btn btn-secondary" type="button"><span><%=data.item_info.stype1=="1" ? "기술" : "체력" %></span></button>
+                  <% } %>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="5" id="stat" />
+              </div>
+              <div style="margin:5px;"></div>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">해방 (공격력)</button>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="0" id="rimitDmg" />
+              </div>
+              <div style="margin:5px;"></div>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">템상공</button>
+                </span>
+                <input type="number" class="form-control" placeholder="" value="0" id="itemUpDmg" />
+                <!-- <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">자동등록</button>
+                </span> -->
+              </div>
+              <div style="margin:5px;"></div>
+              <button class="btn btn-primary" type="button" onclick="javascript:getIvDmg();">스탯적용</button>
+              <button class="btn btn-primary" type="button">스탯초기화</button>
+              <p style="margin-top:5px;">
+                * 템상공이란? 무기를 제외한 아이템에 붙어있는 공격력 옵션의 합을 뜻합니다. (발공토이(6) + 영웅옷(28) + 최악풀셋(6) = 40)
+              </p>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">변이/공앰</h4>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-danger" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  #변이상태
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="bynCtt">
+                  <a class="dropdown-item" value="0">휴먼</a>
+                  <a class="dropdown-item" value="3">변이</a>
+                </div>
+              </div>
+              <div style="margin:5px;"></div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-warning" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  #공앰상태
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dpdvCtt">
+                  <a class="dropdown-item" value="0">공앰없음</a>
+                  <a class="dropdown-item" value="2">일반공앰</a>
+                  <a class="dropdown-item" value="3">고급공앰</a>
+                </div>
+              </div>
+              <input type="hidden" id="bYn" value="0" />
+              <input type="hidden" id="dpDv" value="0" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><h2 class="dmg">인벤공격력 - <span id="curr_inv_dmg1">1</span></h2></p>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+  <script>
+    jQuery(document).ready(function() {
+      var curr_body_up = "0";
+      var curr_num_up = "0";
+
+      if("<%=data.yn %>" != "N") {
+        if(utils.isMobile()) {
+          $(".wp_img").html("");
+          $(".wp_dmg_mo").html("<img style=\"width:50px;height:40px;\" src=\"<%=data.item_info.img_src %>\" alt=\"<%=data.item_info.item_nm %>\">")
+        }else{
+          $(".wp_img").html("<img class=\"card-img-top\" src=\"<%=data.item_info.img_src %>\" alt=\"<%=data.item_info.item_nm %>\">");
+          $(".wp_dmg_mo").html("");
+        }
+      }
+
+      getIvDmg();
+
+      $("button.btn").click(function() {
+        if("<%=data.yn %>" == "N") return;
+
+        var curr_wp_dmg = "0";
+        var curr_wp_numnm = "";
+        var curr_wp_nm = "<%=data.item_info.item_nm %>";
+        var curr_id = $(this).parents("div").attr("id");
+        if(curr_id=="body_up"||curr_id=="num_up") {
+          if(curr_id=="body_up") {
+            curr_body_up = $(this).attr("value");
+          }
+          if(curr_id=="num_up") {
+            curr_num_up = $(this).attr("value");
+          }
+
+          var up_body_ary = [];
+          if(curr_body_up == "0") {
+            up_body_ary = "<%=data.up_obj.up_cls1 %>";
+            $("#curr_wp_body_nm").text("일반튜닝 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes1");
+          }else if(curr_body_up == "1") {
+            up_body_ary = "<%=data.up_obj.up_cls2 %>";
+            $("#curr_wp_body_nm").text("초보튜닝 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes2");
+          }else if(curr_body_up == "2") {
+            up_body_ary = "<%=data.up_obj.up_cls3 %>";
+            $("#curr_wp_body_nm").text("숙련튜닝 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes3");
+          }else if(curr_body_up == "3") {
+            up_body_ary = "<%=data.up_obj.up_cls4 %>";
+            $("#curr_wp_body_nm").text("전문튜닝 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes4");
+          }else if(curr_body_up == "4") {
+            up_body_ary = "<%=data.up_obj.up_cls5 %>";
+            $("#curr_wp_body_nm").text("장인의 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes5");
+          }else if(curr_body_up == "5") {
+            up_body_ary = "<%=data.up_obj.up_cls6 %>";
+            $("#curr_wp_body_nm").text("명인의 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes6");
+          }else if(curr_body_up == "6") {
+            up_body_ary = "<%=data.up_obj.up_cls7 %>";
+            $("#curr_wp_body_nm").text("O.T. 몸체");
+            $("#curr_wp_body_nm").attr("class", "up_classes7");
+          }
+
+          curr_wp_dmg = up_body_ary.split(",")[Number(curr_num_up)];
+
+          var upnm_ary = [];
+          if("<%=data.item_info.clyn %>" == "Y") upnm_ary = "<%=data.numup_list_cl %>";
+          else upnm_ary = "<%=data.numup_list %>";
+
+          curr_wp_numnm = upnm_ary.split(",")[Number(curr_num_up)];
+
+          //데미지세팅
+          $("#curr_wp_dmg").text(curr_wp_dmg);
+
+          //아이템이름세팅
+          if(curr_wp_nm.indexOf("[CL]") > 0) {
+            $("#curr_wp_nm").text(curr_wp_numnm + curr_wp_nm.substr(curr_wp_nm.indexOf("[CL]")+4));
+          }else{
+            $("#curr_wp_nm").text(curr_wp_numnm + " " + curr_wp_nm);
+          }
+
+          getIvDmg();
+        }
+      });
+
+      $(".dropdown-item").click(function() {
+        var curr_id = $(this).parents("div").attr("id");
+        var bYn = 1;
+        var dpDv = 1;
+
+        if(curr_id=="bynCtt" || curr_id=="dpdvCtt") {
+          if(curr_id=="bynCtt") {
+            $("#bYn").val($(this).attr("value"));
+            $("#cur_byn").text($(this).text());
+          }
+
+          if(curr_id=="dpdvCtt") {
+            $("#dpDv").val($(this).attr("value"));
+            $("#cur_dpdv").text($(this).text());
+          }
+
+          getIvDmg();
+        }
+      });
+
+      $("#stat").keydown(function(e) {if(e.keyCode == 13) {getIvDmg();}});
+      $("#rimitDmg").keydown(function(e) {if(e.keyCode == 13) {getIvDmg();}});
+      $("#itemUpDmg").keydown(function(e) {if(e.keyCode == 13) {getIvDmg();}});
+      $("#stat").click(function(e) {$(this).select();});
+      $("#rimitDmg").click(function(e) {$(this).select();});
+      $("#itemUpDmg").click(function(e) {$(this).select();});
+    });
+
+    function wp_change() {
+      // if(confirm("무기를 바꾸나요?")) {
+        document.location.href = "/wp";
+      // }
+    }
+
+    function getIvDmg() {
+      /*
+      * wpDmg:무기데미지,
+      * stat:스탯(체력or기술),
+      * itemUpDmg:템공상합,
+      * rimitDmg:해방공,
+      * bYn:변이여부 (1=변이,3=노변이)
+      * dpDv:공앰여부 (1=노공앰,2=일반공앰,3=고급공앰)
+      */
+      var wpDmg = Number($("#curr_wp_dmg").text());
+      var stat = Number($("#stat").val());
+      var rimitDmg = Number($("#rimitDmg").val());
+      var itemUpDmg = Number($("#itemUpDmg").val());
+      var bYn = Number($("#bYn").val());
+      var dpDv = Number($("#dpDv").val());
+      // console.log(
+      // "무뎀:"+wpDmg + " | " +
+      // "스탯:"+stat + " | " +
+      // "해방:"+rimitDmg + " | " +
+      // "템공:"+itemUpDmg + " | " +
+      // "변이:"+bYn + " | " +
+      // "공앰:"+dpDv);
+      var inv_dmg = utils.getIvDmg(wpDmg,stat,itemUpDmg,rimitDmg,bYn,dpDv);
+      $("#curr_inv_dmg").text(utils.formatComma(String(inv_dmg)));
+      $("#curr_inv_dmg1").text(utils.formatComma(String(inv_dmg)));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol> -->
+      <div class="carousel-inner" role="listbox">
+        <a target="_blank" href="http://eternalcity.mgame.com/news/?rtype=E&idx=2923&ctype=ING">
+          <div class="carousel-item active" style="opacity:0.9;height:0vh;background-image: url('/resource/img/event_img1.JPG')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 style="color:gray;">이터널시티 할로윈 이벤트 (진행중)</h3>
+              <p style="color:gray;">2018.10.11 ~ 2018.11.15</p>
+            </div>
+          </div>
+        </a>
+        <!-- <div class="carousel-item" style="background-image: url('/resource/img/concept_art_04_617.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>이미지</h3>
+            <p>의미 없다.</p>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('/resource/img/concept_art_05_617.jpg')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>이미지</h3>
+            <p>무의미.</p>
+          </div>
+        </div> -->
+      </div>
+      <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a> -->
+    </div>
+  </header>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- <h1 class="my-4">이터인포 - 이터널시티의 유익한 정보를 제공하는 웹사이트 입니다.</h1> -->
+    <div style="margin-top:20px;"></div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100" style="border:0">
+          <% include ../partials/kakao300250 %>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">아이템조회</h4>
+          <div class="card-body">
+            <p class="card-text">이터널시티 장비 조회 가능합니다! 일반부터 OT까지! 1강부터 MAX-9강까지! 모든 업그레이드 수치에 대한 무기 공격력을 확인해보세요. 그외 코튬,악세 등 알찬 내용으로 채우겠습니다! 어디에서도 확인 못하는 정보 이터인포에서만 가능합니다!</p>
+          </div>
+          <div class="card-footer">
+            <a href="/wp" class="btn btn-primary">바로가기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">커스터마이징</h4>
+          <div class="card-body">
+            <p class="card-text">장비를 맞추기전에 여기서 확인해보세요! 인벤공격력을 미리 알수있습니다. 스탯을 직접 입력해서 최적의 세팅을 찾아보세요!</p>
+          </div>
+          <div class="card-footer">
+            <a href="/custom" class="btn btn-primary">공격력계산</a>
+            <a href="/custom/cri" class="btn btn-primary">치명계산</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">알쏭시뮬</h4>
+          <div class="card-body">
+            <p class="card-text">EP획득 필수 알쏭달쏭폭죽! 실제 게임과 동일한 확률로 운을 시험해보세요! 언젠가는 다른 도박상자도 추가되지 않을까요?</p>
+          </div>
+          <div class="card-footer">
+            <a href="/boxsim" class="btn btn-primary">바로가기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">용병계산기</h4>
+          <div class="card-body">
+            <p class="card-text">용병의 강화별 공격력및 체력을 계산합니다.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/ybsim" class="btn btn-primary">바로가기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100" style="border:0">
+          <p><% include ../partials/ad300250 %></p>
+        </div>
+      </div>
+      <!-- <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">데미지계산기</h4>
+          <div class="card-body">
+            <p class="card-text">인벤 공격력에 따라 몬스터를 타격했을때의 예상 데미지를 계산합니다. 몬스터에 체력을 설정해 쓰러지기까지의 시간을 예상합니다.</p>
+          </div>
+          <div class="card-footer">
+            <a href="/dmgsim" class="btn btn-primary">바로가기</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <p><% include ../partials/ad30050 %></p>
+    <h2 class="my-4">바로 가기</h2>
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a target="_blank" href="http://eternalcity.mgame.com/"><img class="card-img-top" src="/resource/img/etc_link1.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">이터널시티 공식홈페이지</a>
+            </h4>
+            <p class="card-text">섭온 ㄱㄱ</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a target="_blank" href="https://cafe.naver.com/eternaltemp/"><img class="card-img-top" src="/resource/img/etc_link2.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">이터널시티 공식카페 (이공카)</a>
+            </h4>
+            <p class="card-text">거래는 여기서! 이터널시티 최대 커뮤니티.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a target="_blank" href="https://www.youtube.com/channel/UCAQBlOUojMMX4jMD4Ci0qIw/featured/"><img class="card-img-top" src="/resource/img/etc_link3.jpg" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">이터널시티 유튜버</a>
+            </h4>
+            <p class="card-text">이터널시티를 컨텐츠로 하는 유일무이 크리에이터.<br/>요술창고님. 이왕 본김에 구독과 추천.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p><% include ../partials/ad %></p>
+  </div>
+  <% include ../partials/footer %>
+  <% include ../partials/script %>
+</body>
+</html>
